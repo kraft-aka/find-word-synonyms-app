@@ -13,7 +13,7 @@ const fetchData = async () => {
   try {
     const response = await fetch(url);
     if (response.ok) {
-      const responseJson = response.json();
+      const responseJson = await response.json();
       console.log(responseJson);  
       outputEl.innerHTML = responseJson
     }

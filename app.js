@@ -1,5 +1,6 @@
 const dataMuseUrl = "https://api.datamuse.com/words?";
 const queryParams = "rel_syn="; //'rel_jja=';
+const queryParams2 = 'rel_jjb=';
 //https://api.datamuse.com/words?rel_syn=forgetful
 
 const inputEl = document.querySelector(".input-field");
@@ -8,18 +9,24 @@ const outputEl = document.querySelector(".output");
 
 const fetchData = async () => {
   const wordQuery = inputEl.value;
-  const url = `${dataMuseUrl}${queryParams}${wordQuery}`;
+  const url = `${dataMuseUrl}${queryParams2}${wordQuery}`;
 
   try {
     const response = await fetch(url);
     if (response.ok) {
       const responseJson = await response.json();
-      console.log(responseJson);  
-      outputEl.innerHTML = responseJson
+      console.log(responseJson);
+      displayRawData(responseJson);
     }
   } catch (error) {
     console.log(error);
   }
+};
+
+// displays row data response
+const displayRawData = (res) => {
+  const trimRes = res.slice(0,5)
+  outputEl.innerHTML = `<text>${JSON.stringify(trimRes)}</text>`;
 };
 
 btnEl.addEventListener("click", (e) => {

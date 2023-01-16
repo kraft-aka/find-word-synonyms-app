@@ -29,6 +29,9 @@ const displayRawData = (res) => {
   outputEl.innerHTML = `<text>${JSON.stringify(trimRes)}</text>`;
 };
 
+// diplay data
+// TODO create a function to display output
+
 btnEl.addEventListener("click", (e) => {
   e.preventDefault();
   fetchData();

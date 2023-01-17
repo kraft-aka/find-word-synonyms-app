@@ -16,7 +16,8 @@ const fetchData = async () => {
     if (response.ok) {
       const responseJson = await response.json();
       console.log(responseJson);
-      displayRawData(responseJson);
+      //displayRawData(responseJson);
+      displayData(responseJson);
     }
   } catch (error) {
     console.log(error);
@@ -30,7 +31,23 @@ const displayRawData = (res) => {
 };
 
 // diplay data
-// TODO create a function to display output
+const displayData = (res) => {
+  if(!res) {
+    outputEl.innerHTML = 'Failed!'
+  }
+  if(!res.length) {
+    outputEl.innerHTML = 'Please, enter a  word to search!'
+  }
+
+  const list = [];
+  let words;
+  for(let i = 0; i < 5; i++) {
+    list.push(`<li>${res[i].word}</li>`);
+  }
+
+  words = list.join('');
+  outputEl.innerHTML = words
+}
 
 btnEl.addEventListener("click", (e) => {
   e.preventDefault();

@@ -1,15 +1,17 @@
 const dataMuseUrl = "https://api.datamuse.com/words?";
-const queryParams = "rel_syn="; //'rel_jja=';
-const queryParams2 = 'rel_jjb=';
+const queryParams = ["rel_syn=", 'rel_jjb=']; //'rel_jja=';
+//const queryParams2 = 'rel_jjb=';
 //https://api.datamuse.com/words?rel_syn=forgetful
 
 const inputEl = document.querySelector(".input-field");
 const btnEl = document.querySelector(".submit-btn");
 const outputEl = document.querySelector(".output");
+const choiceBtnEl = document.getElementsByClassName('query-options').value
+
 
 const fetchData = async () => {
   const wordQuery = inputEl.value;
-  const url = `${dataMuseUrl}${queryParams2}${wordQuery}`;
+  const url = `${dataMuseUrl}${queryParams[0]}${wordQuery}`;
 
   try {
     const response = await fetch(url);
@@ -26,7 +28,7 @@ const fetchData = async () => {
 
 // displays row data response
 const displayRawData = (res) => {
-  const trimRes = res.slice(0,5)
+  const trimRes = res.slice(0,7);
   outputEl.innerHTML = `<text>${JSON.stringify(trimRes)}</text>`;
 };
 
@@ -36,12 +38,12 @@ const displayData = (res) => {
     outputEl.innerHTML = 'Failed!'
   }
   if(!res.length) {
-    outputEl.innerHTML = 'Please, enter a  word to search!'
+    outputEl.innerHTML = 'Please, try again!'
   }
 
   const list = [];
   let words;
-  for(let i = 0; i < 5; i++) {
+  for(let i = 0; i < (Math.min(res.length, 7)); i++) {
     list.push(`<li>${res[i].word}</li>`);
   }
 
@@ -53,3 +55,12 @@ btnEl.addEventListener("click", (e) => {
   e.preventDefault();
   fetchData();
 });
+
+// const getIndex = choiceBtnEl.forEach(btn => {
+//   if(btn.value == 0) {
+//     return 0
+//   } 
+//   if(btn.value == 1) {
+//     return 1
+//   }
+// })

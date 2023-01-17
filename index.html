@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>Word Matching App</title>
 </head>
+
 <body>
   <main>
     <h2 class="title">Enter a Word</h2>
@@ -14,8 +16,13 @@
       <input type="text" class="input-field">
       <input type="submit" class="submit-btn" id="submit-btn">
     </form>
+    <div class="options">
+      <button class="query-option" id="option-1" value="0">Synonyms</button>
+      <button class="query-option" id="option-2" value="1">Adjectives</button>
+    </div>
     <div class="output"></div>
   </main>
   <script src="app.js"></script>
 </body>
+
 </html>

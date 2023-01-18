@@ -1,17 +1,16 @@
 const dataMuseUrl = "https://api.datamuse.com/words?";
-const queryParams = ["rel_syn=", 'rel_jjb=']; //'rel_jja=';
-//const queryParams2 = 'rel_jjb=';
-//https://api.datamuse.com/words?rel_syn=forgetful
+const queryParams = ["rel_syn=", 'rel_jjb=','sl=']; 
 
 const inputEl = document.querySelector(".input-field");
 const btnEl = document.querySelector(".submit-btn");
 const outputEl = document.querySelector(".output");
 const choiceBtnEl = document.getElementsByClassName('query-options').value
-
+const indexEl = document.querySelector('.index');
 
 const fetchData = async () => {
   const wordQuery = inputEl.value;
-  const url = `${dataMuseUrl}${queryParams[0]}${wordQuery}`;
+  const index = indexEl.value;
+  const url = `${dataMuseUrl}${queryParams[index]}${wordQuery}`;
 
   try {
     const response = await fetch(url);

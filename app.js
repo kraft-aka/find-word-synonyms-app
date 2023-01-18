@@ -56,6 +56,10 @@ btnEl.addEventListener("click", (e) => {
   fetchData();
 });
 
+inputEl.addEventListener('focus', (e)=> {
+  e.target.value = ''
+});
+
 // const getIndex = choiceBtnEl.forEach(btn => {
 //   if(btn.value == 0) {
 //     return 0
